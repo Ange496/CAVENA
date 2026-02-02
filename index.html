@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAVENA - Cabinet Vétérinaire & Boutique en Ligne</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="image/logo.png" type="image/png">
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+        <img src="image/logo.png" alt="CAVENA Logo" class="logo-img-loading">
+        <div class="loading-text">CAVENA</div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+           <a href="#accueil" class="logo">
+                <img src="image/logo.png" alt="CAVENA Logo" class="logo-img">
+                 <div class="logo-text">CAVE<span>NA</span></div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#boutique">Boutique</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#rendezvous">Rendez-vous</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="nav-cart">
+                        <a href="#" id="cartButton">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Notification System -->
+    <div class="notification" id="notification">
+        <div class="notification-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <div class="notification-content">
+            <h4>Notification</h4>
+            <p id="notificationMessage">Message de notification</p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+
+<div class="slides">
+    <div class="slide active"
+         style="
+            background-image:url('image/vt.jpg');
+            filter: blur(2px) brightness(0.6);
+         ">
+    </div>
+
+    <div class="slide"
+         style="
+            background-image:url('image/vb.jpg');
+            filter: blur(2px) brightness(0.6);
+         ">
+    </div>
+
+    <div class="slide"
+         style="
+            background-image:url('image/bn.jpg');
+            filter: blur(2px) brightness(0.6);
+         ">
+    </div>
+</div>
+
+
+        <div class="container hero-content">
+            <h1>Santé Animale & Boutique Vétérinaire</h1>
+            <p>CAVENA : Votre cabinet vétérinaire et boutique en ligne pour médicaments et matériel vétérinaire dans la région de la Nawa. Soins experts et produits de qualité pour vos animaux.</p>
+            <div class="hero-btns">
+                <a href="#boutique" class="btn btn-large"><i class="fas fa-shopping-bag"></i> Découvrir la boutique</a>
+                <a href="#rendezvous" class="btn btn-secondary btn-large"><i class="fas fa-calendar-check"></i> Prendre RDV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boutique Section -->
+    <section class="boutique" id="boutique">
+        <div class="container">
+            <div class="section-title-center">
+                <h2>Boutique en Ligne</h2>
+                <p>Médicaments et matériel vétérinaire de qualité pour vos animaux</p>
+            </div>
+            
+            <div class="boutique-filters">
+                <button class="filter-btn active" data-filter="all">Tous les produits</button>
+                <button class="filter-btn" data-filter="medicaments">Médicaments</button>
+                <button class="filter-btn" data-filter="alimentation">Alimentation</button>
+                <button class="filter-btn" data-filter="hygiene">Hygiène & Soins</button>
+                <button class="filter-btn" data-filter="accessoires">Accessoires</button>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Les produits seront générés par JavaScript -->
+            </div>
+            
+            <div class="boutique-cta">
+                <a href="#checkout" class="btn btn-large btn-cart"><i class="fas fa-shopping-cart"></i> Voir mon panier</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title-center">
+                <h2>Nos Services Vétérinaires</h2>
+                <p>Des soins complets pour tous vos animaux</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Consultations</h3>
+                    <p>Examen complet, diagnostic et traitement pour assurer la santé optimale de votre animal. Bilans de santé, conseils nutritionnels et suivi personnalisé.</p>
+                    <a href="#rendezvous" class="btn btn-outline" style="margin-top: auto;">Prendre RDV</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <h3>Vaccination</h3>
+                    <p>Programme de vaccination personnalisé pour protéger votre animal contre les maladies courantes. Vaccins pour chiens, chats, animaux d'élevage.</p>
+                    <a href="#rendezvous" class="btn btn-outline" style="margin-top: auto;">Prendre RDV</a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase-medical"></i>
+                    </div>
+                    <h3>Chirurgie</h3>
+                    <p>Interventions chirurgicales réalisées avec les équipements les plus modernes et des protocoles de sécurité stricts. Stérilisations, chirurgies dentaires, urgences.</p>
+                    <a href="#rendezvous" class="btn btn-outline" style="margin-top: auto;">Prendre RDV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section" id="checkout">
+        <div class="container">
+            <div class="section-title-center">
+                <h2>Finaliser votre commande</h2>
+                <p>Remplissez vos informations pour recevoir vos produits</p>
+            </div>
+            
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <h3>Informations de livraison</h3>
+                    <form id="checkoutForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkout-name">Nom complet *</label>
+                                <input type="text" id="checkout-name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="checkout-phone">Téléphone *</label>
+                                <input type="tel" id="checkout-phone" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkout-email">Email *</label>
+                            <input type="email" id="checkout-email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkout-address">Adresse de livraison *</label>
+                            <textarea id="checkout-address" class="form-control" rows="3" required placeholder="Rue, quartier, ville..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="checkout-city">Ville *</label>
+                            <input type="text" id="checkout-city" class="form-control" required placeholder="Ex: Soubré">
+                        </div>
+                        
+                        <h3 style="margin-top: 40px;">Méthode de paiement</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method" data-method="cash">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <p>Paiement à la livraison</p>
+                            </div>
+                            <div class="payment-method active" data-method="mobile">
+                                <i class="fas fa-mobile-alt"></i>
+                                <p>Mobile Money</p>
+                            </div>
+                            <div class="payment-method" data-method="bank">
+                                <i class="fas fa-university"></i>
+                                <p>Virement bancaire</p>
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" id="payment-method" value="mobile">
+                        
+                        <div class="form-group" id="mobile-money-details" style="display: block;">
+                            <label for="mobile-number">Numéro Mobile Money *</label>
+                            <input type="tel" id="mobile-number" class="form-control" placeholder="Votre numéro Orange Money ou MTN Mobile Money" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-large" style="width: 100%; margin-top: 30px;">
+                            <i class="fas fa-check-circle"></i> Confirmer la commande
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h3>Résumé de commande</h3>
+                    <div class="summary-items" id="summaryItems">
+                        <!-- Les éléments du panier seront ajoutés ici -->
+                    </div>
+                    
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="summaryTotal">0 FCFA</span>
+                    </div>
+                    
+                    <div style="background: var(--light-gray); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <h4><i class="fas fa-truck"></i> Livraison</h4>
+                        <p>Livraison offerte dans la région de la Nawa pour toute commande supérieure à 20.000 FCFA</p>
+                        <p><strong>Frais de livraison:</strong> <span id="deliveryCost">2.000 FCFA</span></p>
+                    </div>
+                    
+                    <div style="margin-top: 20px;">
+                        <h4><i class="fas fa-shield-alt"></i> Garantie</h4>
+                        <p>Tous nos produits sont garantis authentiques et conformes aux normes vétérinaires. Paiement sécurisé et livraison rapide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section class="appointment" id="rendezvous">
+        <div class="container">
+            <div class="section-title-center">
+                <h2>Prendre Rendez-vous</h2>
+                <p>Réservez une consultation pour votre animal</p>
+            </div>
+            
+            <form class="appointment-form" id="appointmentForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Numéro de téléphone *</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Adresse email *</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="animal">Type d'animal *</label>
+                        <select id="animal" class="form-control" required>
+                            <option value="">Sélectionnez un animal</option>
+                            <option value="chien">Chien</option>
+                            <option value="chat">Chat</option>
+                            <option value="oiseau">Oiseau</option>
+                            <option value="rongeur">Rongeur</option>
+                            <option value="elevage">Animal d'élevage</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service demandé *</label>
+                        <select id="service" class="form-control" required>
+                            <option value="">Sélectionnez un service</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="vaccination">Vaccination</option>
+                            <option value="chirurgie">Chirurgie</option>
+                            <option value="urgence">Urgence</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date souhaitée *</label>
+                        <input type="date" id="date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="time">Heure souhaitée *</label>
+                        <select id="time" class="form-control" required>
+                            <option value="">Sélectionnez une heure</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message supplémentaire</label>
+                    <textarea id="message" class="form-control" rows="3" placeholder="Décrivez brièvement le problème ou la raison de votre visite..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-large"><i class="fas fa-paper-plane"></i> Envoyer la demande</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title-center">
+                <h2>Nous Contacter</h2>
+                <p>N'hésitez pas à nous joindre pour toute question</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Adresse</h3>
+                            <p>Région de la Nawa, Côte d'Ivoire</p>
+                            <p style="font-size: 0.9rem; color: #666;">Situé à proximité du marché central de Soubré</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Téléphone</h3>
+                            <p><strong>Urgences:</strong> +225 07 57 67 92 91</p>
+                            <p><strong>Responsable:</strong> Docteur Adjé Koffi Jean-François</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@cavena-veto.ci</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Horaires</h3>
+                            <p><strong>Lun-Ven:</strong> 8h00 - 18h00</p>
+                            <p><strong>Samedi:</strong> 9h00 - 13h00</p>
+                            <p><strong>Dimanche:</strong> De 08h00 à 12h00 et en Urgences uniquement</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#accueil" class="logo">
+                <img src="image/logo.png" alt="CAVENA Logo" class="logo-img">
+                 <div class="logo-text">CAVE<span>NA</span></div>
+            </a><br>
+                    <p>Votre cabinet vétérinaire et boutique en ligne dans la région de la Nawa. Soins experts et produits de qualité pour vos animaux.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/+2250757679291" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="#accueil"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="#boutique"><i class="fas fa-chevron-right"></i> Boutique</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#rendezvous"><i class="fas fa-chevron-right"></i> Rendez-vous</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Région de la Nawa, Côte d'Ivoire</p>
+                    <p><i class="fas fa-phone-alt"></i> +225 07 57 67 92 91</p>
+                    <p><i class="fas fa-envelope"></i> contact@cavena-veto.ci</p>
+                    <p><i class="fas fa-clock"></i> Lun-Ven: 8h-18h | Sam: 8h-18h | Dim: 08h-12h (Urgences uniquement)</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 CAVENA - Cabinet Vétérinaire & Boutique. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Mon Panier</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Les articles du panier seront ajoutés ici -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0 FCFA</span>
+            </div>
+            <a href="#checkout" class="btn btn-large" style="width: 100%;" id="checkoutBtn">
+                <i class="fas fa-check"></i> Commander
+            </a>
+        </div>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/+2250757679291" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <a href="#accueil" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
